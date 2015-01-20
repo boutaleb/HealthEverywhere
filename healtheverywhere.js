@@ -17,7 +17,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://admin:tCgx9b6lSZl9@healtheverywhere-advensys.rhcloud.com/healtheverywhere');
+mongoose.connect('mongodb://test:test@healtheverywhere-advensys.rhcloud.com/healtheverywhere');
 
 var Customer = require('./controllers/customer.js');
 Customer.registerRoutes(app);
