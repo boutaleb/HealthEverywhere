@@ -3,6 +3,7 @@ var app = express();
 
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+var mongodb_url = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://test:test@localhost:27017/'
 
 app.use(require('body-parser')());
 
@@ -20,7 +21,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 var mongoose = require('mongoose');
-mongoose.connect(OPENSHIFT_MONGODB_DB_URL);
+mongoose.connect(mongodb_url);
 
 var Customer = require('./controllers/customer.js');
 Customer.registerRoutes(app);
