@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+
 app.use(require('body-parser')());
 
 // set up handlebars view engine
@@ -17,7 +20,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://test:test@healtheverywhere-advensys.rhcloud.com/healtheverywhere');
+mongoose.connect('mongodb://localhost/test');
 
 var Customer = require('./controllers/customer.js');
 Customer.registerRoutes(app);
@@ -38,7 +41,6 @@ app.use(function(err, req, res, next){
 	res.render('500');
 });
 
-app.listen(app.get('port'), function(){
-	console.log( 'Express started on http://localhost:' +
-	app.get('port') + '; press Ctrl-C to terminate.' );
+app.listen(server_port, server_ip_address, function(){
+  console.log("Listening on " + server_ip_address + ", server_port " + port)
 });

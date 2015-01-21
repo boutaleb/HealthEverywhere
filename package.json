@@ -2,7 +2,7 @@
   "name": "HealthEverywhere",
   "version": "1.0.0",
   "description": "",
-  "main": "customer.js",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.10.1",
     "express": "^4.10.8",
@@ -15,8 +15,8 @@
     "grunt-contrib-less": "^1.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "start": "supervisor server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": ""
 }
