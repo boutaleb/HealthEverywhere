@@ -20,7 +20,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect(OPENSHIFT_MONGODB_DB_URL);
 
 var Customer = require('./controllers/customer.js');
 Customer.registerRoutes(app);
